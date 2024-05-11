@@ -1,0 +1,14 @@
+streamlit
+pandas
+altair
+plotly
+requests
+numpy
+scipy
+pandas
+bs4
+regex
+time
+datetime
+json
+logging
