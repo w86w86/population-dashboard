@@ -15,18 +15,3 @@ st.set_page_config(
 
 alt.themes.enable("dark")
 
-
-#######################
-# (10) IMPORT LIBRARY
-"""
-import requests
-import os
-import pandas as pd
-import regex as re 
-import time
-from datetime import datetime as dt
-import json
-import logging
-
-from censustools import *
-"""
