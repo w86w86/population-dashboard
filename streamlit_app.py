@@ -21,7 +21,7 @@ st.write('2*********************')
 #######################
 # Page configuration
 st.set_page_config(
-    page_title="US Population Census - Semester project",
+    page_title="US Population Census - Semester project 2",
     page_icon="🏂",
     layout="wide",
     initial_sidebar_state="expanded")
@@ -37,7 +37,7 @@ df_reshaped = pd.read_csv('data/us-population-2010-2019-reshaped.csv')
 #######################
 # Sidebar
 with st.sidebar:
-    st.title('🏂 US Population Census - Semester project')
+    st.title('🏂 US Population Census - Semester project 2')
     
     year_list = list(df_reshaped.year.unique())[::-1]
     
