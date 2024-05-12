@@ -4,6 +4,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import plotly.express as px
+import censustools
 
 #######################
 # Page configuration
@@ -24,7 +25,7 @@ df_reshaped = pd.read_csv('data/us-population-2010-2019-reshaped.csv')
 #######################
 # Sidebar
 with st.sidebar:
-    st.title('🏂 US Population Dashboard')
+    st.title('🏂 US Population Census - Semester project')
     
     year_list = list(df_reshaped.year.unique())[::-1]
     
