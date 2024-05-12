@@ -89,8 +89,7 @@ with st.sidebar:
 
     g2 = df [condition]
     #Display the 7 highest population
-    g2 = g2.groupby(['state'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False).head(7)
+    g2 = g2.groupby(['state'])['weight'].sum().sort_values(by='weight', ascending=False).head(7)
     g2['state'] = g2['state'].apply(lambda x: api2.id_to_stateName(x))
     
-g2 = g2.to_markdown(index=False)
-st.write (g2, unsafe_allow_html=True)
+st.write (g2.reset_index())
