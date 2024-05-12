@@ -7,4 +7,3 @@ numpy
 scipy
 bs4
 regex
-time
