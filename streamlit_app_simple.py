@@ -26,9 +26,11 @@ with st.sidebar:
     st.title('🏂 US Population Census - Semester project 2')
     
     year_list = api2.allYearList()
+    #selected_year = st.selectbox('Select a year', year_list)
+    #choose_year     = pd.to_datetime(df['YYYYMM']).dt.year == selected_year
+
+    selected_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
     
-    selected_year = st.selectbox('Select a year', [0] + year_list)
-    choose_year     = pd.to_datetime(df['YYYYMM']).dt.year == selected_year
     choose_state    = None
     choose_state    = df['state']==20
     choose_marital  = None
