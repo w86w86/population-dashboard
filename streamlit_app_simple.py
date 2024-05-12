@@ -19,6 +19,7 @@ alt.themes.enable("dark")
 api2=API('github')
 api2.df = readCSV_and_fuse_dfs_04(api2)
 df = api2.df
+df.to_csv('file.csv')
 #st.write(df.head())
 
 
