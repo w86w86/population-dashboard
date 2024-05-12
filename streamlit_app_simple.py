@@ -27,7 +27,7 @@ df = api2.df
 
 #######################  # Sidebar
 with st.sidebar:
-    st.title('🏂 US Population Census - Semester project 2')
+    st.title('🏂 US Population Census - 3')
     
     year_list = list(api2.allYearList()).insert(0,0) #insert 0 for None value
     #selected_year = st.selectbox('Select a year', year_list)
@@ -48,7 +48,7 @@ with st.sidebar:
     
     condition = None
     
-    if choose_year is not None:
+    if choose_year == 0:
       if condition is None: condition = choose_year
       else: condition &= choose_year
     
@@ -71,3 +71,5 @@ with st.sidebar:
     if choose_highsch is not None:
       if condition is None: condition = choose_highsch
       else: condition &= choose_highsch
+
+    st.write(f'condition : {condition}')
