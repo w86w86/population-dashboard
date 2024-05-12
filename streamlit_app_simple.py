@@ -29,14 +29,15 @@ df = api2.df
 with st.sidebar:
     st.title('🏂 US Population Census - 3')
     
-    year_list = list(api2.allYearList()).insert(0,0) #insert 0 for None value
+    year_list = api2.allYearList() # TODO [list(api2.allYearList()).insert(0,0)],  insert 0 for None value
     #selected_year = st.selectbox('Select a year', year_list)
     #choose_year     = pd.to_datetime(df['YYYYMM']).dt.year == selected_year
 
     selected_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
     
-    choose_state    = None
-    choose_state    = df['state']==20
+    state = st.selectbox('Select state', [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()])
+    choose_state    = df['state']== api2.fullName_to_abbrev(state)
+
     choose_marital  = None
     choose_marital  = df['marital']== 1
     choose_citiz    = None
@@ -52,11 +53,11 @@ with st.sidebar:
       if condition is None: condition = choose_year
       else: condition &= choose_year
     
-    if choose_state is not None:
+    if choose_state  != '':
       if condition is None: condition = choose_state
       else: condition &= choose_state
     
-    if choose_marital is not None:
+    if choose_marital != '':
       if condition is None: condition = choose_marital
       else: condition &= choose_marital
     
