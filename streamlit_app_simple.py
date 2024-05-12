@@ -28,7 +28,7 @@ df.to_csv('file.csv')
 
 #######################  # Sidebar
 with st.sidebar:
-    st.title('🏂 US Population Census 13')
+    st.title('🏂 US Population Census 14')
 
     ## YEAR 
     year_list = api2.allYearList() # TODO [list(api2.allYearList()).insert(0,0)],  insert 0 for None value
