@@ -34,7 +34,7 @@ with st.sidebar:
     selected_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
     
     #list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
-    list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
+    list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()].sort()
     selected_stateAbbrev = st.selectbox('Select state', list_full_name_state)
     
     choose_state    = df['state']== api2.fullName_to_abbrev(selected_stateAbbrev)
