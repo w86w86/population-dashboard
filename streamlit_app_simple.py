@@ -37,7 +37,7 @@ with st.sidebar:
     list_name_state = [api2.id_to_stateName(stateID) for stateID in api2.allStatesIdList()]
     selected_stateAbbrev = st.selectbox('Select state', list_name_state)
     
-    choose_state    = df['state']== api2.fullName_to_abbrev(state)
+    choose_state    = df['state']== api2.fullName_to_abbrev(selected_stateAbbrev)
 
     #choose_year     = None
     choose_year     = pd.to_datetime(df['YYYYMM']).dt.year==selected_year
