@@ -9,10 +9,10 @@ from censustools import *
 ########################
 
 api2=API('github')
-single_file_generator_01(api2)
+#single_file_generator_01(api2)
 #merge_02(api2)
 #group_by_03(api2)
-#api2.df = readCSV_and_fuse_dfs_04(api2)
+api2.df = readCSV_and_fuse_dfs_04(api2)
 
 #######################
 # Page configuration
