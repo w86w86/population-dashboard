@@ -9,7 +9,9 @@ from censustools import *
 ########################
 
 api2=API('github')
+st.write('1*********************')
 st.write(api2.vars['columns']['citiz'])
+st.write('2*********************')
 
 #single_file_generator_01(api2)
 #merge_02(api2)
