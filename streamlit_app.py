@@ -6,6 +6,10 @@ import altair as alt
 import plotly.express as px
 from censustools import *
 
+########################
+
+api2=API('github')
+
 #######################
 # Page configuration
 st.set_page_config(
