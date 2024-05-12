@@ -27,18 +27,22 @@ df = api2.df
 
 #######################  # Sidebar
 with st.sidebar:
-    st.title('🏂 US Population Census 4')
+    st.title('🏂 US Population Census 0')
     
     year_list = api2.allYearList() # TODO [list(api2.allYearList()).insert(0,0)],  insert 0 for None value
-    #selected_year = st.selectbox('Select a year', year_list)
-    #choose_year     = pd.to_datetime(df['YYYYMM']).dt.year == selected_year 
-    choose_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
+    #selected_year = st.selectbox('Select a year', year_list) 
+    selected_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
     
     #list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
-    list_full_name_state = [api2.id_to_stateName(stateID) for stateID in api2.allStatesIdList()]
-    state = st.selectbox('Select state', list_full_name_state)
+    list_name_state = [api2.id_to_stateName(stateID) for stateID in api2.allStatesIdList()]
+    selected_stateAbbrev = st.selectbox('Select state', list_name_state)
+    
     choose_state    = df['state']== api2.fullName_to_abbrev(state)
 
+    #choose_year     = None
+    choose_year     = pd.to_datetime(df['YYYYMM']).dt.year==selected_year
+    choose_state    = None
+    choose_state    = df['state']==api2.abbrev_to_id(selected_stateAbbrev)
     choose_marital  = None
     choose_marital  = df['marital']== 1
     choose_citiz    = None
@@ -50,15 +54,15 @@ with st.sidebar:
     
     condition = None
     
-    if choose_year == 0:
+    if choose_year is not None:
       if condition is None: condition = choose_year
       else: condition &= choose_year
     
-    if choose_state  != '':
+    if choose_state  is not None:
       if condition is None: condition = choose_state
       else: condition &= choose_state
     
-    if choose_marital != '':
+    if choose_marital  is not None:
       if condition is None: condition = choose_marital
       else: condition &= choose_marital
     
