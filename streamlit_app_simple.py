@@ -37,7 +37,7 @@ with st.sidebar:
     option = st.selectbox('States:', ('State', 'Not State'))
     if option == 'State':
         #list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
-        list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]  .)
+        list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()])
         selected_stateAbbrev = st.selectbox('Select state', list_full_name_state)
         
         choose_state    = df['state']== api2.fullName_to_abbrev( api2.fullName_to_abbrev(selected_stateAbbrev) ) 
