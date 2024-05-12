@@ -37,7 +37,7 @@ with st.sidebar:
     #list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
     list_full_name_state = [api2.id_to_stateName(stateID) for stateID in api2.allStatesIdList()]
     state = st.selectbox('Select state', list_full_name_state)
-    #choose_state    = df['state']== api2.fullName_to_abbrev(state)
+    choose_state    = df['state']== api2.fullName_to_abbrev(state)
 
     choose_marital  = None
     choose_marital  = df['marital']== 1
