@@ -29,7 +29,7 @@ df = api2.df
 with st.sidebar:
     st.title('🏂 US Population Census - Semester project 2')
     
-    year_list = api2.allYearList()
+    year_list = list(api2.allYearList()).insert(0,0) #insert 0 for None value
     #selected_year = st.selectbox('Select a year', year_list)
     #choose_year     = pd.to_datetime(df['YYYYMM']).dt.year == selected_year
 
