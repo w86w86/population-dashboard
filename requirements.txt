@@ -8,3 +8,4 @@ scipy
 bs4
 regex
 datetime
+json
