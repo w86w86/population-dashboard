@@ -93,4 +93,4 @@ with st.sidebar:
     g2['state'] = g2['state'].apply(lambda x: api2.id_to_stateName(x))
     
 g2 = g2.to_markdown(index=False)
-st.write (g2)
+st.write (g2, unsafe_allow_html=True)
