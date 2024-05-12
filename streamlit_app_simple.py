@@ -24,25 +24,6 @@ df = api2.df
 
 #######################  # FUNCTIONS to be moved in the Api class
 
-def state_names(url):
-    response = requests.get(url)
-    if response.status_code == 200:
-        state_names = response.json()
-        return state_names
-    else:
-        print("Failed to fetch state names")
-        return None
-
-def get_full_state_name(abbreviation, state_names):
-    if abbreviation.upper() in state_names:
-        return state_names[abbreviation]
-    else:
-        return "Abbreviation not found"
-
-url = "https://gist.githubusercontent.com/mshafrir/2646763/raw/8b0dbb93521f5d6889502305335104218454c2bf/states_hash.json" 
-state_names = state_names(url)
-get_full_state_name(abbreviation, state_names)
-
 
 #######################  # Sidebar
 with st.sidebar:
