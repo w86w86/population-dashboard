@@ -8,47 +8,6 @@ Original file is located at
 
 ##Section 2: Download all required files
 
-###Call the API with my variables for my research
-
-> List of some states "46 SD", "47 TN","10 DE", "2 AK","5 AR","24 MD","31 NE"
-
-CBSA:
-
-"46 SD",
-* "43620 Sioux Falls, SD",
-
-"47 TN"
-* "16860 Chattanooga, TN-GA",
-* "28940 Knoxville, TN",
-* "34980": "Nashville-Davidson--Murfreesboro--Franklin, TN",
-* "28700": "Kingsport-Bristol-Bristol, TN-VA",
-* "32820": "Memphis, TN-MS-AR",
-* "17300": "Clarksville, TN-KY",
-* "27740": "Johnson City, TN",
-* "17420": "Cleveland, TN",
-
-"10 DE"
-* "20100 Dover, DE",
-* "428": "Philadelphia-Reading-Camden, PA-NJ-DE-MD",
-* "41540": "Salisbury, MD-DE",
-*
-* 0 city for "2 AK"
-
-"5 AR",
-* "22900 Fort Smith, AR-OK",
-* "30780 Little Rock-North Little Rock-Conway, AR",
-* "22220 Fayetteville-Springdale-Rogers, AR-MO",
-* "38220 Pine Bluff, AR",
-* "32820 Memphis, TN-MS-AR",
-*
-"24 MD",
-* "25180": "Hagerstown-Martinsburg, MD-WV",
-* "428": "Philadelphia-Reading-Camden, PA-NJ-DE-MD",
-* "12580": "Baltimore-Columbia-Towson, MD",
-* "37980": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",
-* "15680": "California-Lexington Park, MD",
-* "41540": "Salisbury, MD-DE",
-
 ###LIBRARIES, CONSTANTES
 """
 
@@ -564,5 +523,6 @@ def readCSV_and_fuse_dfs_04(api):
   return df
   #print (f'__ All shape: {df.shape}')
   #df.to_csv(api.vars['varini'][api.vars['varini']['env']]['merged2'] + 'group.csv')
+
 
 
