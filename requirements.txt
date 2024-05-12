@@ -4,3 +4,4 @@ altair
 plotly
 requests
 numpy
+scipy
