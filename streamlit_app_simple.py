@@ -34,7 +34,8 @@ with st.sidebar:
     selected_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
 
     ## STATE 
-    option = st.selectbox('States:', ('State', 'Not State'))
+    choose_year     = None
+    option = st.radio('States:', ('Not State','State' ), index=0)
     if option == 'State':
         #list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
         list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
@@ -42,7 +43,7 @@ with st.sidebar:
         
         choose_state    = df['state']== api2.fullName_to_abbrev( api2.fullName_to_abbrev(selected_stateAbbrev) ) 
 
-    #choose_year     = None
+
     choose_year     = pd.to_datetime(df['YYYYMM']).dt.year==selected_year
     choose_state    = None
     choose_state    = df['state']==api2.abbrev_to_id(selected_stateAbbrev)
