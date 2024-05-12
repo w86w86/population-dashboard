@@ -8,7 +8,7 @@ from censustools import *
 
 #######################  # Page configuration
 st.set_page_config(
-    page_title="US Population Census - Semester project 2",
+    page_title="US Population Census - Semester project",
     page_icon="🏂",
     layout="wide",
     initial_sidebar_state="expanded")
@@ -27,12 +27,11 @@ df = api2.df
 
 #######################  # Sidebar
 with st.sidebar:
-    st.title('🏂 US Population Census - 3')
+    st.title('🏂 US Population Census 4')
     
     year_list = api2.allYearList() # TODO [list(api2.allYearList()).insert(0,0)],  insert 0 for None value
     #selected_year = st.selectbox('Select a year', year_list)
-    #choose_year     = pd.to_datetime(df['YYYYMM']).dt.year == selected_year
-
+    #choose_year     = pd.to_datetime(df['YYYYMM']).dt.year == selected_year 
     choose_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
     
     #list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
