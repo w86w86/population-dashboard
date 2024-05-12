@@ -33,9 +33,9 @@ with st.sidebar:
     #selected_year = st.selectbox('Select a year', year_list)
     #choose_year     = pd.to_datetime(df['YYYYMM']).dt.year == selected_year
 
-    selected_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
+    choose_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
     
-    state = st.selectbox('Select state', [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()])
+    state = st.selectbox('Select state', [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()].sort())
     choose_state    = df['state']== api2.fullName_to_abbrev(state)
 
     choose_marital  = None
