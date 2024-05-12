@@ -52,15 +52,12 @@ with st.sidebar:
         selected_marital = st.selectbox('Married ? ', ['No','yes'])         
         choose_state    = df['marital']==(0 if selected_marital=='No' else 1)
 
-    
-    choose_marital  = None
-    choose_marital  = df['marital']== 1
     choose_citiz    = None
-    choose_citiz    = df['citiz']== 1
+    #choose_citiz    = df['citiz']== 1
     choose_collegcred = None
-    choose_collegcred = df['collegcred']== 1
+    #choose_collegcred = df['collegcred']== 1
     choose_highsch  = None
-    choose_highsch  = df['highsch']== 2
+    #choose_highsch  = df['highsch']== 2
     
     condition = None
     
@@ -88,4 +85,10 @@ with st.sidebar:
       if condition is None: condition = choose_highsch
       else: condition &= choose_highsch
 
-    st.write(f'condition: [{condition}]')
+    #st.write(f'condition: [{condition}]')
+
+    g2 = df [condition]
+    #Display the 7 highest population
+    g2 = g2.groupby(['state'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False).head(7)
+    g2['state'] = g2['state'].apply(lambda x: api2.id_to_stateName(x))
+    st.write (g2)
