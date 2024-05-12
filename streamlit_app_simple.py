@@ -28,7 +28,7 @@ df.to_csv('file.csv')
 
 #######################  # Sidebar
 with st.sidebar:
-    st.title('🏂 US Population Census 111')
+    st.title('🏂 US Population Census 001')
 
     ## YEAR 
     year_list = api2.allYearList() # TODO [list(api2.allYearList()).insert(0,0)],  insert 0 for None value
@@ -92,4 +92,4 @@ with st.sidebar:
     g2 = g2.groupby(['state'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False).head(7)
     g2['state'] = g2['state'].apply(lambda x: api2.id_to_stateName(x))
     
-st.write (g2, show_index=False)
+st.write (g2.to_markdown(index=False))
