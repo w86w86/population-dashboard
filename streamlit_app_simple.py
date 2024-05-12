@@ -27,17 +27,17 @@ df = api2.df
 
 #######################  # Sidebar
 with st.sidebar:
-    st.title('🏂 US Population Census 1')
+    st.title('🏂 US Population Census 01')
     
     year_list = api2.allYearList() # TODO [list(api2.allYearList()).insert(0,0)],  insert 0 for None value
     #selected_year = st.selectbox('Select a year', year_list) 
     selected_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
     
     #list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
-    list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()].sort()
+    list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]  .)
     selected_stateAbbrev = st.selectbox('Select state', list_full_name_state)
     
-    choose_state    = df['state']== api2.fullName_to_abbrev(selected_stateAbbrev)
+    choose_state    = df['state']== api2.fullName_to_abbrev( api2.fullName_to_abbrev(selected_stateAbbrev) ) 
 
     #choose_year     = None
     choose_year     = pd.to_datetime(df['YYYYMM']).dt.year==selected_year
