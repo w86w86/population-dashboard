@@ -27,7 +27,7 @@ with st.sidebar:
     
     year_list = api2.allYearList()
     
-    selected_year = st.selectbox('Select a year', year_list)
+    selected_year = st.selectbox('Select a year', ['None'] + year_list)
     choose_year     = pd.to_datetime(df['YYYYMM']).dt.year == selected_year
     choose_state    = None
     choose_state    = df['state']==20
