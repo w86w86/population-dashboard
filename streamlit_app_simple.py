@@ -37,7 +37,7 @@ with st.sidebar:
     choose_year     = pd.to_datetime(df['YYYYMM']).dt.year==selected_year 
 
     ## STATE 
-    choose_year     = None
+    choose_state     = None
     option = st.radio('States:', ('No State','State' ), index=0) 
     if option == 'State':
         #list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
