@@ -19,7 +19,7 @@ alt.themes.enable("dark")
 api2=API('github')
 api2.df = readCSV_and_fuse_dfs_04(api2)
 df = api2.df
-df.to_csv('file.csv')
+#df.to_csv('file.csv')
 #st.write(df.head())
 
 
@@ -31,8 +31,7 @@ with st.sidebar:
     st.title('🏂 US Population Census 00')
 
     ## YEAR 
-    year_list = api2.allYearList() # TODO [list(api2.allYearList()).insert(0,0)],  insert 0 for None value
-    #selected_year = st.selectbox('Select a year', year_list) 
+    year_list = api2.allYearList() # TODO [list(api2.allYearList()).insert(0,0)],  insert 0 for None value 
     selected_year = st.slider("Select a year", min_value=min(year_list), max_value=max(year_list), value=max(year_list)-1)
     choose_year     = pd.to_datetime(df['YYYYMM']).dt.year==selected_year 
 
@@ -40,10 +39,9 @@ with st.sidebar:
     choose_state     = None
     option = st.radio('States:', ('No State','State' ), index=0) 
     if option == 'State':
-        #list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
         list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
         selected_stateAbbrev = st.selectbox('Select state', list_full_name_state)         
-        choose_state    = df['state']== api2.fullName_to_abbrev( api2.fullName_to_abbrev(selected_stateAbbrev) ) 
+        choose_state    = df['state']==api2.abbrev_to_id(api2.fullName_to_abbrev(selected_stateAbbrev) )
 
     ## MARITAL
     choose_marital     = None
