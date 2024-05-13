@@ -117,7 +117,7 @@ st.write(f'Display according to the following conditions: \n{display_select}.')
 
 #Display the df(7states only)
 st.dataframe(state_data,
-             column_order=("states", "population"),
+             column_order=("state", "weight"),
              hide_index=True,
              width=None
              )
