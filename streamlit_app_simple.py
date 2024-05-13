@@ -75,37 +75,37 @@ with st.sidebar:
       if condition is None: condition = choose_year
       else: 
           condition &= choose_year
-          display_select &= f'year: {selected_year}'
+          display_select += f'year: {selected_year}'
     
     if choose_state  is not None:
       if condition is None: condition = choose_state
       else: 
           condition &= choose_state
-          display_select &= f', for the state: {list_full_name_state}'
+          display_select += f', for the state: {list_full_name_state}'
     
     if choose_marital  is not None:
       if condition is None: condition = choose_marital
       else: 
           condition &= choose_marital
-          display_select &= f', marital situation: {choose_marital}'
+          display_select += f', marital situation: {choose_marital}'
     
     if choose_citiz is not None:
       if condition is None: condition = choose_citiz
       else: 
           condition &= choose_citiz
-          display_select &= f', citizen status: {selected_citiz}'
+          display_select += f', citizen status: {selected_citiz}'
     
     if choose_collegcred is not None:
       if condition is None: condition = choose_collegcred
       else: 
           condition &= choose_collegcred 
-          #display_select &= f", Got 4yrs of college credit: {selected_collegcred}"
+          #display_select += f", Got 4yrs of college credit: {selected_collegcred}"
           
     if choose_highsch is not None:
       if condition is None: condition = choose_highsch
       else: 
           condition &= choose_highsch
-          #display_select &= f', Finish HS: {selected_highsch}' 
+          #display_select += f', Finish HS: {selected_highsch}' 
 
     #st.write(f'condition: [{condition}]')
     g2 = api2.df [condition]
