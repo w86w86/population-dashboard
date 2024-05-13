@@ -28,7 +28,7 @@ df.to_csv('file.csv')
 
 #######################  # Sidebar
 with st.sidebar:
-    st.title('🏂 US Population Census 15')
+    st.title('🏂 US Population Census 16')
 
     ## YEAR 
     year_list = api2.allYearList() # TODO [list(api2.allYearList()).insert(0,0)],  insert 0 for None value
@@ -116,7 +116,7 @@ def cityID_to_fullNames(CBSA_Id):
   try:
     res = api2.allVars_dict[2010]['GTCBSA']['values']['item'][str(CBSA_Id)]
   except Exception as e:
-    res = "City ST" 
+    res = "Omaha NE" 
   return res
 
 city_data = g2.groupby(['city'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False) 
