@@ -98,8 +98,8 @@ with st.sidebar:
     if choose_collegcred is not None:
       if condition is None: condition = choose_collegcred
       else: 
-          condition &= choose_collegcred
-          display_select &= f', Got 4 years College Credit: {selected_collegcred}' 
+          condition &= choose_collegcred 
+          display_select &= f", Got 4yrs of college credit: {selected_collegcred}"
           
     if choose_highsch is not None:
       if condition is None: condition = choose_highsch
