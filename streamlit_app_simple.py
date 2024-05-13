@@ -119,17 +119,7 @@ st.write(f'Display according to the following conditions: \n{display_select}.')
 st.dataframe(state_data,
              column_order=("states", "population"),
              hide_index=True,
-             width=None,
-             column_config={
-                "states": st.column_config.TextColumn(
-                    "States",
-                ),
-                "population": st.column_config.ProgressColumn(
-                    "Population",
-                    format="%f",
-                    min_value=0,
-                    max_value=max(state_data.weight),
-                 )}
+             width=None
              )
 #st.write (state_data.reset_index(drop=True) )
 
