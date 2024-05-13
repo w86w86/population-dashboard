@@ -184,6 +184,16 @@ def show_usa_map(city_data, us_cities_geojson_file):
 
 show_usa_map(city_data, 'us_cities.geojson')
 
+#######################  # Logistic regression
+import statsmodels.api as sm
+X = g2[['state', 'nativity', 'marital', 'sex']]
+y = g2['citiz'].replace(2, 0)
+X = sm.add_constant(X)
+model = sm.Logit(y, X)
+result = model.fit()
+
+st.write(result.summary())
+
 #######################  # About us
 with st.expander('About', expanded=True):
         st.write('''
