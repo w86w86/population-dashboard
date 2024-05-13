@@ -50,20 +50,23 @@ with st.sidebar:
         selected_marital = st.selectbox('Married ? ', ['No','Yes'])         
         choose_state    = df['marital']==(1 if selected_marital=='Yes' else 2) 
 
-    ## CITIZ -en cours
+    ## CITIZ 
     choose_citiz     = None
     option = st.radio('Citizen display:', ('No','yes'), index=0) 
     if option == 'yes':
-        selected_citiz = st.selectbox('Citizen ? ', ['No','Yes'])         
+        selected_citiz = st.selectbox('Citizen ?', ['No','Yes'])         
         choose_citiz   = df['citiz']==(1 if selected_citiz=='Yes' else 2) 
 
-    choose_citiz    = None
-    #choose_citiz    = df['citiz']== 1
-    choose_collegcred = None
-    #choose_collegcred = df['collegcred']== 1
-    choose_highsch  = None
-    #choose_highsch  = df['highsch']== 2
-    
+    ## CITIZ 
+    choose_collegcred     = None
+    choose_highsch        = None
+    option = st.radio('High School & College Credit display:', ('No','yes'), index=0) 
+    if option == 'yes':
+        selected_collegcred = st.selectbox('Got College Credit?', ['No','Yes'])         
+        choose_collegcred   = df['collegcred']==(1 if selected_collegcred=='Yes' else 2) 
+        selected_highsch    = st.selectbox('Got College Credit?', ['No','Yes'])  
+        choose_highsch      = df['highsch']==(1 if selected_highsch='Yes' else 2) 
+
     condition = None
     
     if choose_year is not None:
