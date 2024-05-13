@@ -63,7 +63,7 @@ with st.sidebar:
     option = st.radio('High School & College Credit display:', ('No','yes'), index=0) 
     if option == 'yes':
         selected_collegcred = st.selectbox('Got College Credit?', ['No','Yes'])         
-        #choose_collegcred   = df['collegcred']==(1 if selected_collegcred=='Yes' else 2) 
+        choose_collegcred   = df['collegcred']==(1 if selected_collegcred=='Yes' else 2) 
         #selected_highsch    = st.selectbox('Got College Credit?', ['No','Yes'])  
         #choose_highsch      = df['highsch']==(1 if selected_highsch=='Yes' else 2) 
         st.write('Inside: High School & College Credit display')
