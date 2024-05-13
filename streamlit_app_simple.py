@@ -182,7 +182,7 @@ def show_usa_map(city_data, us_cities_geojson_file):
     fig.update_layout(
         geo=dict(
             #bgcolor='black',  #backgound is black, so I need gray
-            bgcolor='rgb(40,40,40)'
+            bgcolor='rgb(60,60,60)'
         )
     )
 
