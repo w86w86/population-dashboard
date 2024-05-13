@@ -87,9 +87,11 @@ with st.sidebar:
 
     #st.write(f'condition: [{condition}]')
 
-    g2 = df [condition]
-    #Display the 7 highest population
-    g2 = g2.groupby(['state'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False).head(7)
-    g2['state'] = g2['state'].apply(lambda x: api2.id_to_stateName(x))
+    state_data = df [condition]
+        
+    #[STATE LEVEL] -------  Display the 7 highest population 
+    state_data = state_data.groupby(['state'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False).head(7)
+    state_data['state'] = state_data['state'].apply(lambda x: api2.id_to_stateName(x))
+
     
-st.write (g2.reset_index(drop=True) )
+st.write (state_data.reset_index(drop=True) )
