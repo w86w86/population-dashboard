@@ -16,15 +16,10 @@ st.set_page_config(
 alt.themes.enable("dark")
 
 #######################  # Load data
+
 api2=API('github')
 api2.df = readCSV_and_fuse_dfs_04(api2)
 df = api2.df
-#df.to_csv('file.csv')
-#st.write(df.head())
-
-
-#######################  # FUNCTIONS to be moved in the Api class
-
 
 #######################  # Sidebar
 with st.sidebar:
@@ -121,7 +116,22 @@ with st.sidebar:
 st.write(f'Display according to the following conditions: \n{display_select}.')
 
 #Display the df(7states only)
-st.write (state_data.reset_index(drop=True) )
+st.dataframe(state_data,
+             column_order=("states", "population"),
+             hide_index=True,
+             width=None,
+             column_config={
+                "states": st.column_config.TextColumn(
+                    "States",
+                ),
+                "population": st.column_config.ProgressColumn(
+                    "Population",
+                    format="%f",
+                    min_value=0,
+                    max_value=max(state_data.population),
+                 )}
+             )
+#st.write (state_data.reset_index(drop=True) )
 
 # [CITY LEVEL]
 def city_state(long_city:str)-> str:
