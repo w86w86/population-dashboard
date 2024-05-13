@@ -23,7 +23,7 @@ df = api2.df
 
 #######################  # Sidebar
 with st.sidebar:
-    st.title('🏂 US Population Census 00')
+    st.title('US Population Census CPS')
 
     ## YEAR 
     year_list = api2.allYearList() # TODO [list(api2.allYearList()).insert(0,0)],  insert 0 for None value 
