@@ -86,12 +86,68 @@ with st.sidebar:
       else: condition &= choose_highsch
 
     #st.write(f'condition: [{condition}]')
-
     state_data = df [condition]
         
     #[STATE LEVEL] -------  Display the 7 highest population 
     state_data = state_data.groupby(['state'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False).head(7)
     state_data['state'] = state_data['state'].apply(lambda x: api2.id_to_stateName(x))
 
-    
+#######################  # Main Layout
 st.write (state_data.reset_index(drop=True) )
+
+# [CITY LEVEL]
+def city_state(long_city:str)-> str:
+  #this function will transform the city long name on the clean one: {city_name}\s{state_abbr}"""
+  try:
+    parts = long_city.split(',')
+    city_name = parts[0].split('-')[0].strip()
+    state_abbr = parts[1].split('-')[0].strip()
+  except Exception as e:
+    #print (f"City is not having the sanme format (cities, ST): {long_city}"), like Bloomington-Normal IL with no SPACE (important)
+    pattern = r'([\s\S]*)([A-Z]{2})'
+    res = re.search(pattern, long_city)
+    city_name = res.group(1).strip()
+    state_abbr = res.group(2).strip()
+  return f"{city_name} {state_abbr}"
+
+def cityID_to_fullNames(CBSA_Id):
+  #this function will return the city ID to it long per CBSA"""
+  return api2.allVars_dict[2010]['GTCBSA']['values']['item'][str(CBSA_Id)]
+
+city_data = g2.groupby(['city'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False)
+city_data['cityFullName'] = city_data['city'].apply(lambda cityID: cityID_to_fullNames(cityID))
+city_data['cityName'] = city_data['cityFullName'].apply(lambda cityID: city_state (cityID))
+
+def show_usa_map(city_data, us_cities_geojson_file):
+    city_data = city_data.reset_index(drop=True)
+
+    # Load GeoJSON file for US cities
+    with open('us_cities.geojson', 'r') as f:
+        geojson_data = json.load(f)
+
+    coordinates_list =[]
+    df_all_cities = pd.unique(city_data['cityName'])
+    for feature in geojson_data['features']:
+        city_name = feature['properties']['name']
+        if city_name in df_all_cities:
+          ind   = city_data.index[city_data['cityName'] == city_name].tolist()[0]
+          coord = feature['geometry']['coordinates']
+          coordinates_list.append ([ind, coord])
+
+    coordinates_dict = {ind: coord for ind, coord in coordinates_list}
+    city_data = city_data[city_data.index.isin(coordinates_dict.keys())] #delete all cities with error in their name
+    city_data['coordinate'] = city_data.index.map(lambda x: coordinates_dict[x])
+
+    #Display the US map
+    fig = px.scatter_geo(city_data,
+                        lon=[coord[0] for coord in city_data['coordinate']],
+                        lat=[coord[1] for coord in city_data['coordinate']],
+                        hover_name='cityFullName',
+                        size='weight',
+                        color='weight',
+                        scope='usa',
+                        color_continuous_scale='Viridis')
+    #fig.update_layout(title='Population per condition')
+    fig.show()
+
+show_usa_map(city_data, 'us_cities.geojson')
