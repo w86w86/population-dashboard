@@ -65,7 +65,7 @@ with st.sidebar:
         selected_collegcred = st.selectbox('Got College Credit?', ['No','Yes'])         
         choose_collegcred   = df['collegcred']==(1 if selected_collegcred=='Yes' else 2) 
         selected_highsch    = st.selectbox('Got College Credit?', ['No','Yes'])  
-        choose_highsch      = df['highsch']==(1 if selected_highsch='Yes' else 2) 
+        choose_highsch      = df['highsch']==(1 if selected_highsch=='Yes' else 2) 
 
     condition = None
     
