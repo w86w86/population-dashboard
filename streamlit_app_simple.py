@@ -158,9 +158,6 @@ def show_usa_map(city_data, us_cities_geojson_file):
 show_usa_map(city_data, 'us_cities.geojson')
 
 ##################### TEST #
-import json
-import pandas as pd
-import plotly.express as px
 
 # Load GeoJSON file for US cities
 with open('us_cities.geojson', 'r') as f:
@@ -182,9 +179,9 @@ for feature in geojson_data['features']:
 df = pd.DataFrame({'city': cities, 'population': populations, 'coordinates': coordinates})
 
 # Create choropleth map using Plotly Express
-fig = px.scatter_geo(df, lon=[coord[0] for coord in df['coordinates']], lat=[coord[1] for coord in df['coordinates']],
+fig2 = px.scatter_geo(df, lon=[coord[0] for coord in df['coordinates']], lat=[coord[1] for coord in df['coordinates']],
                      hover_name='city', size='population', projection='natural earth')
-fig.show()
+st.plotly_chart(fig2)
 
 
 ##################
