@@ -48,7 +48,7 @@ with st.sidebar:
     option = st.radio('Marital display:', ('No','yes'), index=0) 
     if option == 'yes':
         selected_marital = st.selectbox('Married ? ', ['No','Yes'])         
-        choose_state    = df['marital']==(1 if selected_marital=='Yes' else 2) 
+        choose_marital    = df['marital']==(1 if selected_marital=='Yes' else 2) 
 
     ## CITIZ 
     choose_citiz     = None
