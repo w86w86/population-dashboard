@@ -37,7 +37,7 @@ with st.sidebar:
 
     ## STATE 
     choose_state     = None
-    option = st.radio('States:', ('No State','State' ), index=0) 
+    option = st.radio('States display:', ('No State','State' ), index=0) 
     if option == 'State':
         list_full_name_state = [api2.abbrev_to_fullName(api2.id_to_stateName(stateID)) for stateID in api2.allStatesIdList()]
         selected_stateAbbrev = st.selectbox('Select state', list_full_name_state)         
@@ -45,10 +45,17 @@ with st.sidebar:
 
     ## MARITAL
     choose_marital     = None
-    option = st.radio('Marital:', ('No','yes'), index=0) 
+    option = st.radio('Marital display:', ('No','yes'), index=0) 
     if option == 'yes':
         selected_marital = st.selectbox('Married ? ', ['No','Yes'])         
         choose_state    = df['marital']==(1 if selected_marital=='Yes' else 2) 
+
+    ## CITIZ -en cours
+    choose_citiz     = None
+    option = st.radio('Citizen display:', ('No','yes'), index=0) 
+    if option == 'yes':
+        selected_citiz = st.selectbox('Citizen ? ', ['No','Yes'])         
+        choose_citiz   = df['citiz']==(1 if selected_citiz=='Yes' else 2) 
 
     choose_citiz    = None
     #choose_citiz    = df['citiz']== 1
