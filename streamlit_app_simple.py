@@ -113,7 +113,11 @@ def city_state(long_city:str)-> str:
   return f"{city_name} {state_abbr}"
 
 def cityID_to_fullNames(CBSA_Id):
-  return api2.allVars_dict[2010]['GTCBSA']['values']['item'][str(CBSA_Id)]
+  try:
+    res = api2.allVars_dict[2010]['GTCBSA']['values']['item'][str(CBSA_Id)]
+  except Exception as e:
+    res = "City ST" 
+  return res
 
 city_data = g2.groupby(['city'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False) 
 city_data['cityFullName'] = city_data['city'].apply(cityID_to_fullNames)
