@@ -183,7 +183,7 @@ def show_usa_map(city_data, us_cities_geojson_file):
         geo=dict(
             #bgcolor='black',  #backgound is black, so I need gray
             bgcolor='rgb(17,17,17)',
-            projection_scale=250,
+            projection_scale=50,
             showland=False,
             showcoastlines=False
         )
