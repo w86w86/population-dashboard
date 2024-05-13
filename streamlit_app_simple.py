@@ -87,7 +87,7 @@ with st.sidebar:
       if condition is None: condition = choose_marital
       else: 
           condition &= choose_marital
-          display_select += f', marital situation: {choose_marital}'
+          display_select += f', marital situation: {selected_marital}'
     
     if choose_citiz is not None:
       if condition is None: condition = choose_citiz
