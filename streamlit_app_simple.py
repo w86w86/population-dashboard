@@ -205,10 +205,8 @@ good_coef = 0.5
 for independant_var, coef, pvalue in zip(result.params.index, result.params.values, result.pvalues.values):
     if coef > good_coef or coef < -good_coef:
         if pvalue < good_pval:
-            significance_label = "[Significant]"
-        else:
             significance_label = ""
-        st.write(f"{independant_var}: Coefficient={coef:.4f} (p-value={pvalue:.4f}) {significance_label}")
+        st.write(f"   - The variable {independant_var} is significant for to become a citizen: Coefficient={coef:.4f} (p-value={pvalue:.4f})")
 
 with st.expander('Logistic Regression Result Table', expanded=False):
     st.write(result.summary())
