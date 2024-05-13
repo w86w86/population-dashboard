@@ -203,7 +203,7 @@ st.write('''
 good_pval = 0.05
 good_coef = 0.5
 for independant_var, coef, pvalue in zip(result.params.index, result.params.values, result.pvalues.values):
-    if pvalue < good_pval or coef > good_coef:
+    if coef > good_coef or coef < good_coef:
         if pvalue < good_pval:
             significance_label = "[Significant]"
         else:
