@@ -92,4 +92,4 @@ with st.sidebar:
     g2 = g2.groupby(['state'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False).head(7)
     g2['state'] = g2['state'].apply(lambda x: api2.id_to_stateName(x))
     
-st.write (g2.reset_index())
+st.write (g2.reset_index(drop=True) )
