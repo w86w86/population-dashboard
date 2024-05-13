@@ -128,7 +128,7 @@ st.dataframe(state_data,
                     "Population",
                     format="%f",
                     min_value=0,
-                    max_value=max(state_data.population),
+                    max_value=max(state_data.weight),
                  )}
              )
 #st.write (state_data.reset_index(drop=True) )
