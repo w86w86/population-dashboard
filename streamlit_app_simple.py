@@ -116,8 +116,7 @@ with st.sidebar:
 st.write(f'Display according to the following conditions: \n{display_select}.')
 
 #Display the df(7states only)
-st.dataframe(state_data)
-#st.write (state_data.reset_index(drop=True) )
+st.write (state_data.reset_index(drop=True) )
 
 # [CITY LEVEL]
 def city_state(long_city:str)-> str:
