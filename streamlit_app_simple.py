@@ -70,12 +70,12 @@ with st.sidebar:
 
     condition      = None
     display_select = ''
-    
+
+    display_select += f'year: {selected_year}'
     if choose_year is not None:
       if condition is None: condition = choose_year
       else: 
           condition &= choose_year
-          display_select += f'year: {selected_year}'
     
     if choose_state  is not None:
       if condition is None: condition = choose_state
