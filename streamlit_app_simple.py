@@ -183,3 +183,11 @@ def show_usa_map(city_data, us_cities_geojson_file):
     st.plotly_chart(fig)
 
 show_usa_map(city_data, 'us_cities.geojson')
+
+#######################  # About us
+with st.expander('About', expanded=True):
+        st.write('''
+            - Data: [US Census Bureau API from the Current Population Survey (CPS)](https://www.census.gov/data/developers/data-sets/census-microdata-api/cps/basic.html).
+            - Semester project for :orange[**Econ 8320**]: - Tools for Data Analysis!
+            - StreamlitLinks to an external site. dashboard highlighting demographic changes in the US from 2010 to 2023
+            ''')
