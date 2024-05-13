@@ -95,17 +95,17 @@ with st.sidebar:
 
 
 #######################  # Main Layout
+# display the df(7states only)
 st.write (state_data.reset_index(drop=True) )
 
 # [CITY LEVEL]
 def city_state(long_city:str)-> str:
-  #this function will transform the city long name on the clean one: {city_name}\s{state_abbr}"""
   try:
     parts = long_city.split(',')
     city_name = parts[0].split('-')[0].strip()
     state_abbr = parts[1].split('-')[0].strip()
   except Exception as e:
-    #print (f"City is not having the sanme format (cities, ST): {long_city}"), like Bloomington-Normal IL with no SPACE (important)
+    #print (f"City is not having the same format (cities, ST): {long_city}"), like Bloomington-Normal IL with no SPACE (important)
     pattern = r'([\s\S]*)([A-Z]{2})'
     res = re.search(pattern, long_city)
     city_name = res.group(1).strip()
@@ -113,10 +113,9 @@ def city_state(long_city:str)-> str:
   return f"{city_name} {state_abbr}"
 
 def cityID_to_fullNames(CBSA_Id):
-  #this function will return the city ID to it long per CBSA"""
   return api2.allVars_dict[2010]['GTCBSA']['values']['item'][str(CBSA_Id)]
 
-city_data = g2.groupby(['city'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False)
+city_data = g2.groupby(['city'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False) 
 city_data['cityFullName'] = city_data['city'].apply(lambda cityID: cityID_to_fullNames(cityID))
 city_data['cityName'] = city_data['cityFullName'].apply(lambda cityID: city_state (cityID))
 
