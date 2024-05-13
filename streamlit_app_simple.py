@@ -81,7 +81,7 @@ with st.sidebar:
       if condition is None: condition = choose_state
       else: 
           condition &= choose_state
-          display_select += f', for the state: {list_full_name_state}'
+          display_select += f', for the state: {selected_stateAbbrev}'
     
     if choose_marital  is not None:
       if condition is None: condition = choose_marital
