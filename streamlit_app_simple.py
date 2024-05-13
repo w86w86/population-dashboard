@@ -100,7 +100,7 @@ with st.sidebar:
       else: 
           condition &= choose_collegcred
           display_select &= f', Got 4 years College Credit: {selected_collegcred}' 
-    
+          
     if choose_highsch is not None:
       if condition is None: condition = choose_highsch
       else: 
@@ -118,7 +118,7 @@ with st.sidebar:
 
 #######################  # Main Layout
 #Display
-st.write(f'Display according to the following conditions: {condition}.')
+st.write(f'Display according to the following conditions: \n{display_select}.')
 
 #Display the df(7states only)
 st.write (state_data.reset_index(drop=True) )
