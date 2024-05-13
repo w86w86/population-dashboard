@@ -188,7 +188,7 @@ show_usa_map(city_data, 'us_cities.geojson')
 import statsmodels.api as sm
 X = g2[['state', 'nativity', 'marital', 'sex']]
 y = g2['citiz'].replace(2, 0)
-X = sm.add_constant(X)
+#X = sm.add_constant(X)
 model = sm.Logit(y, X)
 result = model.fit()
 
