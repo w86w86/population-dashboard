@@ -188,6 +188,9 @@ show_usa_map(city_data, 'us_cities.geojson')
 with st.expander('About', expanded=True):
         st.write('''
             - Data: [US Census Bureau API from the Current Population Survey (CPS)](https://www.census.gov/data/developers/data-sets/census-microdata-api/cps/basic.html).
-            - Semester project for :orange[**Econ 8320**]: - Tools for Data Analysis!
-            - StreamlitLinks to an external site. dashboard highlighting demographic changes in the US from 2010 to 2023
+            - Semester project for :orange[**Econ 8320**] Tools for Data Analysis!
+            - Streamlit dashboard highlighting demographic changes in the US from 2010 to 2023
+            - Information at the year-month-city level, describing the proportion in the overall population of at least 7 demographic variables 
+            - Website from your GitHub 
+            - Author: Souleymane Diawara - May 2024. 
             ''')
