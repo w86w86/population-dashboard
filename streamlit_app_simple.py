@@ -116,8 +116,8 @@ def cityID_to_fullNames(CBSA_Id):
   return api2.allVars_dict[2010]['GTCBSA']['values']['item'][str(CBSA_Id)]
 
 city_data = g2.groupby(['city'])['weight'].sum().reset_index().sort_values(by='weight', ascending=False) 
-city_data['cityFullName'] = city_data['city'].apply(lambda cityID: cityID_to_fullNames(cityID))
-city_data['cityName'] = city_data['cityFullName'].apply(lambda cityID: city_state (cityID))
+city_data['cityFullName'] = city_data['city'].apply(lambda x: cityID_to_fullNames(x))
+city_data['cityName'] = city_data['cityFullName'].apply(lambda x: city_state (x))
 
 def show_usa_map(city_data, us_cities_geojson_file):
     city_data = city_data.reset_index(drop=True)
