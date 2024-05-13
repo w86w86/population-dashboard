@@ -105,7 +105,7 @@ with st.sidebar:
       if condition is None: condition = choose_highsch
       else: 
           condition &= choose_highsch
-          display_select &= f', Finish HS: {selected_highsch}' 
+          #display_select &= f', Finish HS: {selected_highsch}' 
 
     #st.write(f'condition: [{condition}]')
     g2 = api2.df [condition]
