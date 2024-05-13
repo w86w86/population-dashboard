@@ -192,7 +192,26 @@ X = sm.add_constant(X)
 model = sm.Logit(y, X)
 result = model.fit()
 
-st.write(result.summary())
+st.write('''
+    This table presents the results of a logistic regression analysis that predicts citizenship status based on demographic
+    and socio-economic factors depending on where the individual live (state), where he/she was born (nativity), 
+    marital status and gender.
+    As a result, this is the variables that are significants in association with citizenship, 
+    suggesting who are more likely to be citizens or not.
+''')
+
+good_pval = 0.05
+good_coef = 0.5
+for independant_var, coef, pvalue in zip(result.params.index, result.params.values, result.pvalues.values):
+    if pvalue < good_pval or coef > good_coef:
+        if pvalue < good_pval:
+            significance_label = "[Significant]"
+        else:
+            significance_label = ""
+        st.write(f"{independant_var}: Coefficient={coef:.4f} (p-value={pvalue:.4f}) {significance_label}")
+
+with st.expander('Logistic Regression Result Table', expanded=False):
+    st.write(result.summary())
 
 #######################  # About us
 with st.expander('About', expanded=True):
