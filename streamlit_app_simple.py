@@ -104,7 +104,10 @@ with st.sidebar:
 
 
 #######################  # Main Layout
-# display the df(7states only)
+#Display
+st.write(f'Display according to the following conditions: {condition}.')
+
+#Display the df(7states only)
 st.write (state_data.reset_index(drop=True) )
 
 # [CITY LEVEL]
